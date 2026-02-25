@@ -1,0 +1,63 @@
+{
+  "Name": "Blank Page",
+  "Fields": {
+    "url-name": "",
+    "popular-name": "",
+    "scientific-name": "",
+    "causes": "",
+    "paragraph-one": "",
+    "paragraph-two": "",
+    "paragraph-three": "",
+    "paragraph-four": "",
+    "paragraph-five": "",
+    "treatment": "",
+    "prophylaxis": "",
+    "essay": "",
+    "contributors": "",
+    "contributor-name": "",
+    "company-name": "",
+    "summary-name": "",
+    "contributor-area": "",
+    "contributors-2": "",
+    "contributor-footer": ""
+  },
+  "Diseases": {
+    "Url name": "",
+    "Popular name": "",
+    "Scientific name": "",
+    "Causes": "",
+    "Prognosis": "",
+    "Treatment": "",
+    "Prophylaxis": "",
+    "Essay": "",
+    "Epidemiology": "",
+    "Contributors": [],
+    "PCR references": [],
+    "Videos": [],
+    "Pictures": []
+  },
+  "Settings": {
+    "Is active": false,
+    "PRO": false,
+    "Water type": "0",
+    "Species": "0"
+  },
+  "Symptoms": {
+    "Behaviour": [
+      {
+        "DiseaseName": "Juveniles disoriented swimming at surface (Behaviour)",
+        "Description": "",
+        "Value": null
+      }
+    ],
+    "Water quality": [],
+    "Body": [],
+    "Eyes": [],
+    "Fins": [],
+    "Gills": [],
+    "Tail": [],
+    "Haemotology": [],
+    "Histopathology": [],
+    "Pathology": []
+  }
+}

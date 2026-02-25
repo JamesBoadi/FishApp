@@ -1,0 +1,7 @@
+To run:
+
+1. Install node js v20 or higher: https://nodejs.org
+2. Open the app
+3. cd to FishApp
+4. Run npm install 
+5. Run npm start
