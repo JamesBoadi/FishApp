@@ -23,11 +23,11 @@ const server = http.createServer((req, res) => {
     const file = fs.readFileSync(path.join(PUBLIC_DIR, 'screenshot.png'));
 
     // Send file as download
-    res.writeHead(200, {
+   /* res.writeHead(200, {
       'Content-Type': 'image/png',
       'Content-Disposition': 'attachment; filename="screenshot.png"',
       'Content-Length': file.length
-    });
+    });*/
 
       res.end(file);
   }
