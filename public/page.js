@@ -2,9 +2,6 @@ var searchResultsArr = [];
 var currentSymptomCategory = 'Behaviour'; // Default symptom category
 var currrentResult = {}; // Default current search result
 
-// TODO: Fix water quality
-// Add remaining state
-
 var map = new Map();
 var count = 0;
 
@@ -13,11 +10,26 @@ var fontValue = 'Italic';
 var storedFonts = [];
 
 var settingSelectedId = '';
+var currentPage = '';
 
 localStorage.setItem("load", false);
 var load = localStorage.getItem("load");
 
 setTimeout(init, 1500);
+
+async function downloadPage() {
+    const response = await fetch('/downloadImage')
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    const a = document.getElementById('download')
+    a.href = url;
+    a.download = "screenshot.png";
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+
+}
+
 
 async function init() {
     // If it does not exist
@@ -83,7 +95,7 @@ async function init() {
         const settings = dataStore.Settings;
         if (settings !== undefined && settings !== null) {
             for (const [setting, value] of Object.entries(settings)) {
-                  console.log("val " + value);
+                console.log("val " + value);
                 let radio = document.querySelector(
                     'input[name="fish_id"][value="' + value + '"]'
                 );
@@ -113,7 +125,7 @@ async function init() {
         });
 
         document.getElementById('create-page').value = pages.CurrentPage;
-
+        document.getElementById('disease-page').textContent = pages.CurrentPage;
         // Set map
         for (const key of Object.keys(dataStore)) {
             console.log(key);
@@ -181,18 +193,10 @@ async function changePage(page) {
         location.reload();
 }
 
-function addOption(text) {
-    const select = document.getElementById('createpage');
-
-    const option = document.createElement('option');
-    option.value = text;     // value equals text
-    option.textContent = text;
-
-    select.appendChild(option);
-}
-
 async function selectPage(event) {
     const page = event.target.value;
+    currentPage = page;
+    document.getElementById('disease-page').textContent = currentPage;
     await changePage(page);
 }
 
@@ -681,4 +685,18 @@ function toggleSymptoms() {
             container.style.display === "none" ? "block" : "none";
         return;
     }
+}
+
+function addOption(text) {
+    const select = document.getElementById('createpage');
+
+    const option = document.createElement('option');
+    option.value = text;     // value equals text
+    option.textContent = text;
+
+    select.appendChild(option);
+}
+
+function getPage() {
+    return currentPage;
 }

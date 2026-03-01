@@ -2,6 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
+const screenshot = require('screenshot-desktop');
 
 const PORT = 3000;
 const PUBLIC_DIR = path.join(__dirname, 'public'); // public folder
@@ -15,6 +16,22 @@ const server = http.createServer((req, res) => {
 
   const filePath = path.join(PUBLIC_DIR, DATASTORE);
   const readFile = JSON.parse(fs.readFileSync(filePath, 'utf8')); // data store
+
+  if (req.method === 'GET' && req.url === '/downloadImage') {
+    screenshot({ filename: path.join(PUBLIC_DIR, 'screenshot.png') });
+
+    const file = fs.readFileSync(path.join(PUBLIC_DIR, 'screenshot.png'));
+
+    // Send file as download
+    res.writeHead(200, {
+      'Content-Type': 'image/png',
+      'Content-Disposition': 'attachment; filename="screenshot.png"',
+      'Content-Length': file.length
+    });
+
+      res.end(file);
+  }
+
 
   if (req.method === 'GET' && req.url === '/getPages') {
     res.writeHead(200, { 'Content-Type': 'application/json' });
@@ -53,7 +70,7 @@ const server = http.createServer((req, res) => {
       }
 
       pages.push(page);
- 
+
       const htmlFile = path.join(PUBLIC_DIR, `/BlankPage.html`);
       const content = fs.readFileSync(htmlFile, 'utf8');
       const htmlFilePath = path.join(PUBLIC_DIR, `/${page}.html`);
@@ -309,9 +326,9 @@ const server = http.createServer((req, res) => {
   fs.readFile(htmlFilePath, 'utf8', (err, data) => {
     if (err) {
       // res.writeHead(404, { 'Content-Type': 'text/plain' });
-    //  res.writeHead(302, { Location: `/BlankPage.html` });
-     res.end('404 Not Found');
-     // console.error('404 not found')
+      //  res.writeHead(302, { Location: `/BlankPage.html` });
+      res.end('404 Not Found');
+      // console.error('404 not found')
     } else {
       //res.writeHead(200, { 'Content-Type': contentType });
       res.end(data);

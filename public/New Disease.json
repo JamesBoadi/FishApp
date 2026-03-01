@@ -1,21 +1,13 @@
 {
-  "Name": "Blank Page",
+  "Name": "datastore",
   "Fields": {
     "url-name": "",
-    "popular-name": "",
-    "scientific-name": "",
-    "causes": "",
-    "paragraph-one": "",
-    "paragraph-two": "",
-    "paragraph-three": "",
-    "paragraph-four": "",
-    "paragraph-five": "",
-    "treatment": {
-      "id": "treatment",
-      "innerText": "treat",
-      "selection": "treat",
+    "popular-name": {
+      "id": "popular-name",
+      "innerText": "EXAMPLE TEXT",
+      "selection": "EXAMPLE TEXT",
       "style": {
-        "0": "font-style",
+        "0": "color",
         "accentColor": "",
         "additiveSymbols": "",
         "alignContent": "",
@@ -138,7 +130,7 @@
         "clip": "",
         "clipPath": "",
         "clipRule": "",
-        "color": "",
+        "color": "green",
         "colorInterpolation": "",
         "colorInterpolationFilters": "",
         "colorRendering": "",
@@ -223,7 +215,7 @@
         "fontSize": "",
         "fontSizeAdjust": "",
         "fontStretch": "",
-        "fontStyle": "italic",
+        "fontStyle": "",
         "fontSynthesis": "",
         "fontSynthesisSmallCaps": "",
         "fontSynthesisStyle": "",
@@ -699,6 +691,14 @@
         "zoom": ""
       }
     },
+    "scientific-name": "",
+    "causes": "",
+    "paragraph-one": "",
+    "paragraph-two": "",
+    "paragraph-three": "",
+    "paragraph-four": "",
+    "paragraph-five": "",
+    "treatment": "",
     "prophylaxis": "",
     "essay": "",
     "contributors": "",
@@ -725,26 +725,26 @@
     "Pictures": []
   },
   "Settings": {
-    "Is active": true,
+    "Is active": false,
     "PRO": false,
     "Water type": "0",
     "Species": "0"
   },
   "Symptoms": {
-    "Behaviour": [],
+    "Behaviour": [
+      {
+        "DiseaseName": "Sunburn (Skin)",
+        "Description": "",
+        "Value": null
+      }
+    ],
     "Water quality": [],
     "Body": [],
     "Eyes": [],
     "Fins": [],
     "Gills": [],
     "Tail": [],
-    "Haemotology": [
-      {
-        "DiseaseName": "Opercular emphysema and possible oedema (Pathology)",
-        "Description": "",
-        "Value": null
-      }
-    ],
+    "Haemotology": [],
     "Histopathology": [],
     "Pathology": []
   }
