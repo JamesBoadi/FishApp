@@ -18,16 +18,16 @@ const server = http.createServer((req, res) => {
   const readFile = JSON.parse(fs.readFileSync(filePath, 'utf8')); // data store
 
   if (req.method === 'GET' && req.url === '/downloadImage') {
-    screenshot({ filename: path.join(PUBLIC_DIR, 'screenshot.png') });
+    screenshot({ filename: path.join(PUBLIC_DIR, 'screenshot.jpeg') });
 
-    const file = fs.readFileSync(path.join(PUBLIC_DIR, 'screenshot.png'));
+    const file = fs.readFileSync(path.join(PUBLIC_DIR, 'screenshot.jpeg'));
 
     // Send file as download
-   /* res.writeHead(200, {
+    res.writeHead(200, {
       'Content-Type': 'image/png',
       'Content-Disposition': 'attachment; filename="screenshot.png"',
       'Content-Length': file.length
-    });*/
+    });
 
       res.end(file);
   }

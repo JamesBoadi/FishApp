@@ -23,7 +23,7 @@ async function downloadPage() {
     const url = window.URL.createObjectURL(blob);
     const a = document.getElementById('download')
     a.href = url;
-    a.download = "screenshot.png";
+    a.download = "screenshot.jpeg";
     document.body.appendChild(a);
     a.click();
     window.URL.revokeObjectURL(url);
