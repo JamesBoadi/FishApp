@@ -24,8 +24,8 @@ const server = http.createServer((req, res) => {
 
     // Send file as download
     res.writeHead(200, {
-      'Content-Type': 'image/png',
-      'Content-Disposition': 'attachment; filename="screenshot.png"',
+      'Content-Type': 'image/jpeg',
+      'Content-Disposition': 'attachment; filename="screenshot.jpeg"',
       'Content-Length': file.length
     });
 
