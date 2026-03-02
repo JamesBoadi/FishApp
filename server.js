@@ -26,7 +26,6 @@ const server = http.createServer(async (req, res) => {
 
       const file = fs.readFileSync(path.join(PUBLIC_DIR, 'screenshot.jpeg'));
      
-      setTimeout(() => {
       res.writeHead(200, {
         "Content-Type": "image/jpeg",
         "Content-Disposition": "attachment; filename=screenshot.jpeg"
@@ -34,7 +33,7 @@ const server = http.createServer(async (req, res) => {
 
       ///  fs.unlink(`${path.join(PUBLIC_DIR, '/screenshot.jpeg')}`);
       res.end(file);
-    }, 3000);
+    
     // Send file as download 
 
 

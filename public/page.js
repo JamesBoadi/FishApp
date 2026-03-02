@@ -26,8 +26,11 @@ async function downloadPage() {
     a.download = "screenshot.jpeg";
     document.body.appendChild(a);
     a.click();
-    a.remove();
-    window.URL.revokeObjectURL(url);
+
+    setTimeout(() => {
+        a.remove();
+        window.URL.revokeObjectURL(url);
+    }, 2000);
 
 }
 
