@@ -25,7 +25,8 @@ const server = http.createServer((req, res) => {
     const file = fs.readFileSync(path.join(PUBLIC_DIR, '/screenshot.jpeg'));
 
       // Send file as download
-      res.end(file);
+       res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({file: file}));
   } 
 
 
