@@ -18,43 +18,19 @@ var load = localStorage.getItem("load");
 setTimeout(init, 1500);
 
 async function downloadPage() {
-  const response = await fetch('/downloadImage');
-  const blob = await response.blob();
+    const response = await fetch('/downloadImage')
+    const blob = await response.blob()
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a')
+    a.href = url;
+    a.download = "screenshot.jpeg";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    window.URL.revokeObjectURL(url);
 
-  const img = new Image();
-  const url = URL.createObjectURL(blob);
-
-  img.onload = () => {
-    const canvas = document.createElement("canvas");
-
-    // Set desired dimensions
-    const width = 800;
-    const height = 600;
-
-    canvas.width = width;
-    canvas.height = height;
-
-    const ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0, width, height);
-
-    URL.revokeObjectURL(url);
-
-    canvas.toBlob((resizedBlob) => {
-      const downloadUrl = URL.createObjectURL(resizedBlob);
-
-      const a = document.createElement("a");
-      a.href = downloadUrl;
-      a.download = "screenshot.jpeg";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-
-      URL.revokeObjectURL(downloadUrl);
-    }, "image/jpeg");
-  };
-
-  img.src = url;
 }
+
 
 async function init() {
     // If it does not exist
