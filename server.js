@@ -20,11 +20,13 @@ const server = http.createServer(async (req, res) => {
   if (req.method === 'GET' && req.url === '/downloadImage') {
 
 
-    screenshot({ filename: path.join(PUBLIC_DIR, 'screenshot.jpeg') });
-    setTimeout(() => {
 
+   
+      screenshot({ filename: path.join(PUBLIC_DIR, 'screenshot.jpeg') });
 
       const file = fs.readFileSync(path.join(PUBLIC_DIR, 'screenshot.jpeg'));
+     
+      setTimeout(() => {
       res.writeHead(200, {
         "Content-Type": "image/jpeg",
         "Content-Disposition": "attachment; filename=screenshot.jpeg"
