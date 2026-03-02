@@ -24,10 +24,14 @@ const server = http.createServer((req, res) => {
 
     const file = fs.readFileSync(path.join(PUBLIC_DIR, '/screenshot.jpeg'));
 
-      // Send file as download
-       res.writeHead(200, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({file: file}));
-  } 
+    // Send file as download
+    res.writeHead(200, {
+      "Content-Type": "image/jpeg",
+      "Content-Disposition": "attachment; filename=screenshot.jpeg"
+    });
+
+    res.end(file);
+  }
 
 
   if (req.method === 'GET' && req.url === '/getPages') {
