@@ -22,15 +22,15 @@ async function downloadPage() {
     const blob = await response.blob()
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a')
-    a.href = url;
-    a.download = "screenshot.jpeg";
+    a.href = "https://www.workintool.com/image-converter/image-to-word.html";
+   
     document.body.appendChild(a);
     a.click();
 
-    setTimeout(() => {
+   
         a.remove();
         window.URL.revokeObjectURL(url);
-    }, 2000);
+  
 
 }
 
