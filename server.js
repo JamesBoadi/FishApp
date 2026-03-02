@@ -21,15 +21,20 @@ const server = http.createServer(async (req, res) => {
 
 
     screenshot({ filename: path.join(PUBLIC_DIR, 'screenshot.jpeg') });
-    const file = fs.readFileSync(path.join(PUBLIC_DIR, 'screenshot.jpeg'));
-    // Send file as download 
-    res.writeHead(200, {
-      "Content-Type": "image/jpeg",
-      "Content-Disposition": "attachment; filename=screenshot.jpeg"
-    });
+    setTimeout(() => {
 
-    ///  fs.unlink(`${path.join(PUBLIC_DIR, '/screenshot.jpeg')}`);
-    res.end(file);
+
+      const file = fs.readFileSync(path.join(PUBLIC_DIR, 'screenshot.jpeg'));
+      res.writeHead(200, {
+        "Content-Type": "image/jpeg",
+        "Content-Disposition": "attachment; filename=screenshot.jpeg"
+      });
+
+      ///  fs.unlink(`${path.join(PUBLIC_DIR, '/screenshot.jpeg')}`);
+      res.end(file);
+    }, 3000);
+    // Send file as download 
+
 
 
   }
