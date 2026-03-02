@@ -11,26 +11,27 @@ const pages = ['BlankPage'];
 let currentPage = 'BlankPage';
 let DATASTORE = `${currentPage}.json`;
 
-const server = http.createServer((req, res) => {
+const server = http.createServer(async (req, res) => {
   console.log(`${req.method} ${req.url}`);
 
   const filePath = path.join(PUBLIC_DIR, DATASTORE);
   const readFile = JSON.parse(fs.readFileSync(filePath, 'utf8')); // data store
 
   if (req.method === 'GET' && req.url === '/downloadImage') {
-    screenshot({
-      filename: path.join(PUBLIC_DIR, 'screenshot.jpeg')
-    });
 
-    const file = fs.readFileSync(path.join(PUBLIC_DIR, '/screenshot.jpeg'));
 
-    // Send file as download
+    screenshot({ filename: path.join(PUBLIC_DIR, 'screenshot.jpeg') });
+    const file = fs.readFileSync(path.join(PUBLIC_DIR, 'screenshot.jpeg'));
+    // Send file as download 
     res.writeHead(200, {
       "Content-Type": "image/jpeg",
       "Content-Disposition": "attachment; filename=screenshot.jpeg"
     });
 
+    ///  fs.unlink(`${path.join(PUBLIC_DIR, '/screenshot.jpeg')}`);
     res.end(file);
+
+
   }
 
 
