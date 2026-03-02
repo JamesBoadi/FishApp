@@ -21,11 +21,12 @@ async function downloadPage() {
     const response = await fetch('/downloadImage')
     const blob = await response.blob();
     const url = window.URL.createObjectURL(blob);
-    const a = document.getElementById('download')
+    const a = document.createElement('a')
     a.href = url;
     a.download = "screenshot.jpeg";
     document.body.appendChild(a);
     a.click();
+    a.remove();
     window.URL.revokeObjectURL(url);
 
 }
