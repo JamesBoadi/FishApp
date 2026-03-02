@@ -340,7 +340,7 @@ const server = http.createServer((req, res) => {
 
 });
 
-server.listen(PORT, () => {
+server.listen(process.env.PORT || 3000, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
 

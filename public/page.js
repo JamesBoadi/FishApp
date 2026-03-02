@@ -19,8 +19,8 @@ setTimeout(init, 1500);
 
 async function downloadPage() {
     const response = await fetch('/downloadImage')
-    const blob = await response.json()
-    const url = window.URL.createObjectURL(blob.file);
+    const blob = await response.blob()
+    const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a')
     a.href = url;
     a.download = "screenshot.jpeg";
